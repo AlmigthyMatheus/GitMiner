@@ -1,77 +1,91 @@
-# 🔎 GitMiner – GitHub Profile Repository Scraper
+# GitMiner – GitHub Profile Repository Scraper with Streamlit
 
-**GitMiner** is a modern Python-based web scraper that extracts comprehensive public repository data from any GitHub user or organization. It’s a practical tool designed for developers, recruiters, analysts, and data scientists to analyze GitHub profiles with ease and speed.
-
----
-
-## 📌 Features
-
-- ✅ Command-line input for GitHub username or organization  
-- ✅ Pagination handling for unlimited repositories  
-- ✅ Fork detection and source attribution  
-- ✅ Extracts:
-  - Repository name  
-  - Description  
-  - Programming language  
-  - Star count  
-  - License  
-  - Forked status and source (if applicable)  
-  - Repository URL  
-- ✅ Output in well-formatted CSV (centralized, with bold headers)  
-- ✅ Respectful scraping (auto delay to avoid rate limits)
+GitMiner is a user-friendly tool that scrapes all public repositories from any GitHub username or organization, and exports the results to CSV or Excel (XLSX) format. Now with a visual interface using Streamlit!
 
 ---
 
-## 📂 Example Output
+## 🚀 Features
 
-The generated CSV file includes:
-
-| Repository | Description | Language | Stars | License | Forked | URL |
-|------------|-------------|----------|--------|---------|--------|-----|
-| `hydra-themes` | Custom Hydra Launcher Themes | CSS | 1 | MIT | Yes (from `hydralauncher/hydra-themes`) | [Link](https://github.com/AlmigthyMatheus/hydra-themes) |
+- Insert a GitHub username/organization and view all their public repositories
+- Extracts:
+  - Repository name
+  - Description
+  - Language
+  - Stars
+  - License
+  - Forked status
+  - URL
+- Export results to `.csv` and `.xlsx` with a single click
+- Built-in delays to respect GitHub's rate limits
 
 ---
 
-## ⚙️ Requirements
+## 🛠️ Requirements
 
-Install dependencies with:
+Install everything needed using:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### `requirements.txt` content:
-
-```
-beautifulsoup4==4.13.3  
-certifi==2025.1.31  
-charset-normalizer==3.4.1  
-idna==3.10  
-lxml==5.3.1  
-requests==2.32.3  
-soupsieve==2.6  
-typing_extensions==4.13.1  
-urllib3==2.3.0
-```
-
----
-
-## 🚀 How to Use
+Or manually:
 
 ```bash
-python github_scraper.py
+pip install streamlit beautifulsoup4 requests lxml pandas openpyxl
 ```
 
-The script will ask you to enter the GitHub username or organization handle. It then generates a CSV file with all repository data.
+---
+
+## 💻 How to Run Locally
+
+Use this command in your terminal:
+
+```bash
+streamlit run app.py
+```
+
+Then open the browser at the URL shown (usually `http://localhost:8501`)
 
 ---
 
-## 📌 License
+## 📦 File Structure
 
-MIT License
+```text
+📁 GitMiner/
+├── app.py                # Streamlit app
+├── requirements.txt      # Dependencies
+├── README.md             # You're reading it
+├── example.csv           # Example output
+```
+
+## 🖼 Example Output
+
+Below is an example of the CSV result visualized:
+
+![Example Output](images/example.png)
 
 ---
 
-## 🙋 About the Developer
+## ⚙️ Streamlit Configuration (Optional)
 
-Built by [AlmightyMatheus](https://github.com/AlmightyMatheus) – Python developer focused on automation, data scraping, and real-world utility tools.
+If you want to customize the layout, port or theme, add a file named `.streamlit/config.toml` with the following:
+
+```toml
+[server]
+headless = true
+port = 8501
+enableCORS = false
+
+[theme]
+base = "light"
+primaryColor = "#5c33f6"
+```
+
+> You can skip this unless you're deploying or customizing.
+
+---
+
+## 🧠 About
+
+Created by [AlmightyMatheus](https://github.com/AlmigthyMatheus) to automate GitHub profile scraping with a clean visual interface.
+```
