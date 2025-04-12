@@ -28,7 +28,7 @@ The generated CSV file includes:
 
 | Repository | Description | Language | Stars | License | Forked | URL |
 |------------|-------------|----------|--------|---------|--------|-----|
-| `hydra-themes` | Custom Hydra Launcher Themes | CSS | 1 | MIT | Yes (from `hydralauncher/hydra-themes`) | [Link](https://github.com/AlmightyMatheus/hydra-themes) |
+| `hydra-themes` | Custom Hydra Launcher Themes | CSS | 1 | MIT | Yes (from `hydralauncher/hydra-themes`) | [Link](https://github.com/AlmigthyMatheus/hydra-themes) |
 
 ---
 
