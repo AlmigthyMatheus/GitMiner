@@ -6,8 +6,7 @@ import time
 
 st.set_page_config(page_title="GitMiner", layout="centered")
 st.markdown("<h1 style='text-align: center;'>🔎 GitMiner</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Scrape GitHub profiles and export beautiful CSV/Excel files</p>",
-            unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Scrape GitHub profiles and export beautiful CSV/Excel files</p>", unsafe_allow_html=True)
 
 username = st.text_input("🧑‍💻 Enter GitHub username or organization name", placeholder="e.g., torvalds")
 
@@ -40,10 +39,13 @@ def scrape_github_repos(user):
             stars = int(stars) if stars.isdigit() else 0
             license_tag = repo.find('span', class_='mr-3')
             license_text = license_tag.text.strip() if license_tag else "N/A"
-            fork_info = repo.find('span', class_='text-small lh-condensed-ultra')
-            forked = "No"
-            if fork_info and "forked from" in fork_info.text:
-                forked = f"Yes (from {fork_info.find('a').text})"
+
+            # CORREÇÃO DO FORKED
+            forked_tag = repo.select_one('span.lh-condensed-ultra a')
+            if forked_tag:
+                forked = f"Yes (from {forked_tag.text.strip()})"
+            else:
+                forked = "No"
 
             repos_data.append({
                 "Repository": repo_name,
@@ -56,7 +58,7 @@ def scrape_github_repos(user):
             })
 
         page += 1
-        time.sleep(1.5)
+        time.sleep(1.5)  # Delay para evitar bloqueios
 
     return pd.DataFrame(repos_data)
 
