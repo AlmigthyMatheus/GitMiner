@@ -41,9 +41,10 @@ def scrape_github_repos(user):
             license_text = license_tag.text.strip() if license_tag else "N/A"
 
             # CORREÇÃO DO FORKED
-            forked_tag = repo.select_one('span.lh-condensed-ultra a')
-            if forked_tag:
-                forked = f"Yes (from {forked_tag.text.strip()})"
+            fork_span = repo.find('span', class_='text-small lh-condensed-ultra no-wrap mt-1')
+            if fork_span and 'forked from' in fork_span.text.lower():
+                fork_link = fork_span.find('a')
+                forked = f"Yes (from {fork_link.text.strip()})" if fork_link else "Yes"
             else:
                 forked = "No"
 
